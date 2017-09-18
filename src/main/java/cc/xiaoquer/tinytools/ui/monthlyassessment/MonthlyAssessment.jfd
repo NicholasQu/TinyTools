@@ -1,0 +1,210 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundleName": "resources"
+	"i18n.keyPrefix": "MonthlyAssessment"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"$sizePolicy": 1
+			"$locationPolicy": 1
+			"defaultCloseOperation": 3
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowActivated", "thisWindowActivated", true ) )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0:1.0"
+				"$rowSpecs": "0:1.0"
+				"$alignTop": true
+				"$alignLeft": true
+			} ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "117, 611, 64"
+					"$rowSpecs": "0, 91, 0, 0, 0, 276, 32"
+					"$hGap": 5
+					"$vGap": 5
+					"$alignLeft": true
+					"$alignTop": true
+				} ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "考核Excel "
+						"horizontalAlignment": 11
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "txtExcelFile"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "btnChoose"
+						"text": "选择文件"
+						"border": new javax.swing.border.LineBorder( sfield java.awt.Color red, 2, true )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "btnChooseMouseClicked", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "邮件主体模板 "
+						"horizontalAlignment": 11
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 1
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "txtTemplateMailBody"
+							"text": new FormMessage( null, "MonthlyAssessment.txtTemplateMailBody.text" )
+							"lineWrap": true
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": new FormMessage( null, "MonthlyAssessment.label4.text" )
+						"horizontalAlignment": 11
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 2
+					} )
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "txtTemplateBonus"
+						"text": new FormMessage( null, "MonthlyAssessment.txtTemplateBonus.text" )
+						"lineWrap": true
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 2
+						"gridx": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": new FormMessage( null, "MonthlyAssessment.label5.text" )
+						"horizontalAlignment": 11
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 3
+					} )
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "txtTemplateMemo"
+						"text": new FormMessage( null, "MonthlyAssessment.txtTemplateMemo.text" )
+						"lineWrap": true
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 3
+						"gridx": 1
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+						"$columnSpecs": "189, 196, 0"
+						"$rowSpecs": "0"
+						"$hGap": 5
+						"$vGap": 5
+						"$alignLeft": true
+						"$alignTop": true
+					} ) {
+						name: "panel1"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnParse"
+							"text": new FormMessage( null, "MonthlyAssessment.btnParse.text" )
+							"minimumSize": new java.awt.Dimension( 50, 27 )
+							"preferredSize": new java.awt.Dimension( 50, 27 )
+							"border": new javax.swing.border.BevelBorder( 0, sfield java.awt.Color red, sfield java.awt.Color red, sfield java.awt.Color red, sfield java.awt.Color red )
+							"opaque": true
+							"multiClickThreshhold": 1l
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "btnParseMouseClicked", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 1
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 4
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane2"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "tabExcel"
+							"autoCreateRowSorter": true
+							"autoResizeMode": 0
+							"background": new java.awt.Color( 255, 255, 255, 255 )
+							"showHorizontalLines": true
+							"showVerticalLines": true
+							"opaque": false
+							"border": new javax.swing.border.MatteBorder( 1, 1, 1, 1, sfield java.awt.Color black )
+							"selectionBackground": new java.awt.Color( 102, 102, 102, 255 )
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 5
+						"gridwidth": 3
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+						"$columnSpecs": "53, 73, 139, 7, 119, 131, 0, 0, 0"
+						"$rowSpecs": "31"
+						"$hGap": 5
+						"$vGap": 5
+						"$alignLeft": true
+						"$alignTop": true
+					} ) {
+						name: "panel2"
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "radioAll"
+							"text": new FormMessage( null, "MonthlyAssessment.radioAll.text" )
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							"selected": true
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioAllMouseClicked", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "radioNone"
+							"text": new FormMessage( null, "MonthlyAssessment.radioNone.text" )
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioNoneMouseClicked", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 1
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "txtMailAddress"
+							"text": new FormMessage( null, "MonthlyAssessment.txtMailAddress.text" )
+							"toolTipText": "发件邮箱"
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 2
+						} )
+						add( new FormComponent( "javax.swing.JPasswordField" ) {
+							name: "txtMailPassword"
+							"text": new FormMessage( null, "MonthlyAssessment.txtMailPassword.text" )
+							"toolTipText": "邮箱密码"
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 4
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "txtMailTitle"
+							"text": new FormMessage( null, "MonthlyAssessment.txtMailTitle.text" )
+							"toolTipText": "邮件标题"
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 5
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnSendMail"
+							"text": new FormMessage( null, "MonthlyAssessment.btnSendMail.text" )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "btnSendMailMouseClicked", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 8
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 6
+						"gridwidth": 3
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 890, 610 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "buttonGroup1"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 626 )
+		} )
+	}
+}

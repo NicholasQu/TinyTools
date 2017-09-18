@@ -1,0 +1,123 @@
+<!--
+    Tomcat应用服务器上下文需设置的系统变量：
+    (不能用设置JDK的启动参数，因为一般一个虚机多个Tomcat但是同一个JDK)
+    ${env.cell.name}        - 虚机名称，比如 cell01
+    ${env.node.name}        - 虚机内多节点环境下的节点名称，比如 node01
+
+    AccessControl为 Web应用上下文设置的默认环境变量：
+    (同名变量的使用优先级为 myApp.properties > accessControl default >  tomcat context)
+    ${app.name}             - 应用名称
+    ${log.path}             - log路径
+    ${log.root.level}       - root 日志级别
+    ${log.hibernate.level}  - hibnerate 日志级别
+    ${log.spring.level}     - Spring 日志级别
+    ${log.lowest.level}     - 三者中最低的日志级别 min(hibnernate, spring, root)
+
+    格式化输出：
+    http://logback.qos.ch/manual/layouts.html
+    %20logger 	false 	20 	none 	Left pad with spaces if the logger name is less than 20 characters long.
+    %-20logger 	true 	20 	none 	Right pad with spaces if the logger name is less than 20 characters long.
+    %.30logger 	NA 	none 	30 	Truncate from the beginning if the logger name is longer than 30 characters.
+    %20.30logger 	false 	20 	30 	Left pad with spaces if the logger name is shorter than 20 characters. However, if logger name is longer than 30 characters, then truncate from the beginning.
+    %-20.30logger 	true 	20 	30 	Right pad with spaces if the logger name is shorter than 20 characters. However, if logger name is longer than 30 characters, then truncate from the beginning.
+    %.-30logger 	NA 	none 	30 	Truncate from the end if the logger name is longer than 30 characters.
+
+    %d表示日期，
+    %.-10thread表示线程名前10个字符且多余10个会截取
+    %.10thread表示截取后10个字符，
+    %-5level：级别从左显示5个字符宽度
+    %msg：日志消息，%n是换行符
+-->
+<configuration>
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    <jmxConfigurator/>
+
+    <property name="local.log.fullpath"         value="${user.dir}/TT_FILES" />
+    <property name="local.file.format"          value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%logger{36}:%-4line] - %msg%n" />
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${local.file.format}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${local.log.fullpath}/tinytools.log</file>
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+            <!--<level>INFO</level>-->
+            <!--<onMatch>ACCEPT</onMatch>-->
+            <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${local.log.fullpath}/tinytools-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <MaxHistory>1</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>10MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${local.file.format}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="MAIL-SUCC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${local.log.fullpath}/mailsending-succ.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${local.log.fullpath}/mailsending-succ-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <MaxHistory>1</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>10MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${local.file.format}</pattern>
+        </encoder>
+    </appender>
+    <appender name="MAIL-FAIL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${local.log.fullpath}/mailsending-fail.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${local.log.fullpath}/mailsending-fail-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <MaxHistory>1</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>10MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${local.file.format}</pattern>
+        </encoder>
+    </appender>
+
+    <!--<logger name="cn.memedai.framework.accesscontrol.filter.AppLogFilter" additivity="false" level="INFO">
+        <appender-ref ref="httpLog"/>
+    </logger>-->
+
+    <!--additivity=false 表示其他appender不会打印这个-->
+    <logger name="mail.succ" additivity="false" level="INFO">
+        <appender-ref ref="MAIL-SUCC"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="mail.fail" additivity="false" level="INFO">
+        <appender-ref ref="MAIL-FAIL"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <!-- 日志输出级别 -->
+    <root level="${local.log.root.level}">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="MAIL-SUCC"/>
+        <appender-ref ref="MAIL-FAIL"/>
+    </root>
+
+</configuration>
