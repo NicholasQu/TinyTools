@@ -1,6 +1,6 @@
 package cc.xiaoquer.tinytools;
 
-import cc.xiaoquer.tinytools.ui.monthlyassessment.BatchMailsSendingUI;
+import cc.xiaoquer.tinytools.ui.mail.BatchMailsSendingUI;
 
 /**
  * Created by Nicholas on 2017/9/2.

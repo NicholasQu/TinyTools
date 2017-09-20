@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Wed Sep 13 09:11:50 CST 2017
  */
 
-package cc.xiaoquer.tinytools.ui.monthlyassessment;
+package cc.xiaoquer.tinytools.ui.mail;
 
 import cc.xiaoquer.tinytools.html.MailGenerator;
 import cc.xiaoquer.tinytools.mail.MailForm;
