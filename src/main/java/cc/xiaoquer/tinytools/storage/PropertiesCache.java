@@ -10,8 +10,8 @@ import java.util.Properties;
  */
 public class PropertiesCache {
     public static final String  CONFIG_PATH                 = System.getProperty("user.dir") + File.separator + "TT_FILES";
-    private static final String CONFIG_FILE_NAME            = "conf.properties";
-    private static File         CONFIG_FILE                 = new File(CONFIG_PATH, CONFIG_FILE_NAME);
+    private static final String CONFIG_FILE_NAME            = CONFIG_PATH + File.separator +"conf" + File.separator + "conf.properties";
+    private static File         CONFIG_FILE                 = new File(CONFIG_FILE_NAME);
     private static long         CONFIG_FILE_LAST_MODIFIED   = 0L;
 
     private static final String CONFIG_BACKUP_FILE_NAME     = "conf-{}.properties";
@@ -153,7 +153,11 @@ public class PropertiesCache {
 
 
         if (!CONFIG_FILE.exists()) {
-            System.out.println("生成缓存文件..." + CONFIG_PATH + File.separator + CONFIG_FILE_NAME);
+            try {
+                CONFIG_FILE.createNewFile();
+            } catch (IOException e) {
+            }
+            System.out.println("生成缓存文件..." + CONFIG_FILE.getAbsolutePath());
         }
 
         FileWriter writer = null;

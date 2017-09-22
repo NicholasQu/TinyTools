@@ -316,17 +316,17 @@ public class BatchMailsSendingUI extends JFrame {
         previewMail();
     }
 
-    //切换点击行的check状态
+    //切换点击行的check状态(预览与勾选可能会冲突）
     private void toggleRowCheck() {
-        DefaultTableModel model = (DefaultTableModel)tabExcel.getModel();
-        int row = tabExcel.getSelectedRow();
-        int col = tabExcel.getSelectedColumn();
+//        DefaultTableModel model = (DefaultTableModel)tabExcel.getModel();
+//        int row = tabExcel.getSelectedRow();
+//        int col = tabExcel.getSelectedColumn();
 
-        boolean ischeck = (boolean)model.getValueAt(row, 0);
+//        boolean ischeck = (boolean)model.getValueAt(row, 0);
 
-        if (col > 0 && !ischeck) {
-            model.setValueAt(!ischeck, row, 0);
-        }
+//        if (col > 0 && !ischeck) {
+//            model.setValueAt(!ischeck, row, 0);
+//        }
 
     }
     private int getAndRenderSelectedRows() {
@@ -906,6 +906,7 @@ public class BatchMailsSendingUI extends JFrame {
 
                     //---- editorMailBodyPreview ----
                     editorMailBodyPreview.setText("\u9884\u89c8");
+                    editorMailBodyPreview.setEditable(false);
                     scrollPane3.setViewportView(editorMailBodyPreview);
                 }
                 contentPanel.add(scrollPane3, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,

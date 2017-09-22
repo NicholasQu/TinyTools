@@ -264,6 +264,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JEditorPane" ) {
 							name: "editorMailBodyPreview"
 							"text": "预览"
+							"editable": false
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 						"gridx": 1
