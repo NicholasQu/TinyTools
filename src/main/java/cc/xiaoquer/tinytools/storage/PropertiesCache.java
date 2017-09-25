@@ -60,7 +60,7 @@ public class PropertiesCache {
 
     public static void backupCacheFile(String backupKey) {
         //创建备份文件
-        File backUpFile = new File(CONFIG_PATH, CONFIG_BACKUP_FILE_NAME.replace("{}", backupKey));
+        File backUpFile = new File(CONFIG_FILE_NAME, CONFIG_BACKUP_FILE_NAME.replace("{}", backupKey));
         try {
             if (!backUpFile.exists()) {
                 backUpFile.createNewFile();
@@ -77,7 +77,7 @@ public class PropertiesCache {
 
     public static void restoreCacheFile(String backupKey) {
         //创建备份文件
-        File backUpFile = new File(CONFIG_PATH, CONFIG_BACKUP_FILE_NAME.replace("{}", backupKey));
+        File backUpFile = new File(CONFIG_FILE_NAME, CONFIG_BACKUP_FILE_NAME.replace("{}", backupKey));
         try {
             if (backUpFile.exists()) {
                 //创建备份文件成功，进行文件复制
@@ -111,13 +111,9 @@ public class PropertiesCache {
     }
 
     public static Properties readFile() {
-        File propDir = new File(CONFIG_PATH);
-        if (!propDir.exists()) {
-            propDir.mkdirs();
-        }
-
         if (!CONFIG_FILE.exists()) {
             try {
+                CONFIG_FILE.getParentFile().mkdirs();
                 CONFIG_FILE.createNewFile();
             } catch (IOException e) {
             }
@@ -154,6 +150,7 @@ public class PropertiesCache {
 
         if (!CONFIG_FILE.exists()) {
             try {
+                CONFIG_FILE.getParentFile().mkdirs();
                 CONFIG_FILE.createNewFile();
             } catch (IOException e) {
             }
