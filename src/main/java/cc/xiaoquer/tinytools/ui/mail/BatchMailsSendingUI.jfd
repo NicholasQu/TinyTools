@@ -12,16 +12,23 @@ new FormModel {
 			"$alignTop": true
 			"$alignLeft": true
 		} ) {
-			name: "this"
-			"$sizePolicy": 1
+			name: "mailFrame"
 			"$locationPolicy": 1
 			"defaultCloseOperation": 3
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			"minimumSize": new java.awt.Dimension( 800, 700 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0:1.0"
+				"$rowSpecs": "0:1.0"
+				"$alignTop": true
+				"$alignLeft": true
+			} ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				"preferredSize": new java.awt.Dimension( 774, 90 )
+				"minimumSize": new java.awt.Dimension( 774, 90 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-					"$columnSpecs": "117, 621"
-					"$rowSpecs": "0, 162, 0, 29, 0, 0, 119, 203, 32"
+					"$columnSpecs": "117, 559"
+					"$rowSpecs": "0, 135, 0, 29, 0, 0, 109, 169, 32"
 					"$hGap": 5
 					"$vGap": 5
 					"$alignLeft": true
@@ -41,7 +48,7 @@ new FormModel {
 						"$alignLeft": true
 						"$alignTop": true
 					} ) {
-						name: "panel3"
+						name: "choosePanel"
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "txtExcelFile"
 							addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtExcelFileFocusLost", true ) )
@@ -70,7 +77,9 @@ new FormModel {
 						"gridx": 1
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "scrollPane2"
+						name: "excelTabPanel"
+						"preferredSize": new java.awt.Dimension( 454, 135 )
+						"minimumSize": new java.awt.Dimension( 100, 100 )
 						add( new FormComponent( "javax.swing.JTable" ) {
 							name: "tabExcel"
 							"autoCreateRowSorter": true
@@ -88,13 +97,13 @@ new FormModel {
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 						"$columnSpecs": "65, 79, 123, 465"
-						"$rowSpecs": "43"
+						"$rowSpecs": "79"
 						"$hGap": 5
 						"$vGap": 5
 						"$alignLeft": true
 						"$alignTop": true
 					} ) {
-						name: "panelCheck"
+						name: "checkPanel"
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "radioAll"
 							"text": new FormMessage( null, "BatchMailsSendingUI.radioAll.text" )
@@ -127,6 +136,7 @@ new FormModel {
 								"lineWrap": true
 								"font": new java.awt.Font( "sansserif", 0, 9 )
 								"foreground": new java.awt.Color( 0, 0, 0, 255 )
+								"editable": false
 							} )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridx": 3
@@ -231,6 +241,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "txtMailTitle"
 						"toolTipText": "邮件标题"
+						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtMailTitleFocusLost", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 						"gridx": 1
 						"gridy": 5
@@ -243,10 +254,16 @@ new FormModel {
 						"gridy": 6
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "scrollPane1"
+						name: "bodyPanel"
+						"minimumSize": new java.awt.Dimension( 610, 90 )
+						"preferredSize": new java.awt.Dimension( 610, 108 )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "txtMailBody"
 							"lineWrap": true
+							"text": new FormMessage( null, "BatchMailsSendingUI.txtMailBody.text" )
+							"minimumSize": new java.awt.Dimension( 670, 90 )
+							"preferredSize": new java.awt.Dimension( 670, 102 )
+							addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtMailBodyFocusLost", true ) )
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 						"gridx": 1
@@ -260,7 +277,9 @@ new FormModel {
 						"gridy": 7
 					} )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "scrollPane3"
+						name: "previewPanel"
+						"minimumSize": new java.awt.Dimension( 500, 100 )
+						"preferredSize": new java.awt.Dimension( 500, 169 )
 						add( new FormComponent( "javax.swing.JEditorPane" ) {
 							name: "editorMailBodyPreview"
 							"text": "预览"
@@ -278,7 +297,7 @@ new FormModel {
 						"$alignLeft": true
 						"$alignTop": true
 					} ) {
-						name: "panel2"
+						name: "batchPanel"
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "btnSendMail"
 							"text": new FormMessage( null, "BatchMailsSendingUI.btnSendMail.text" )
@@ -292,13 +311,11 @@ new FormModel {
 						"gridy": 8
 						"gridwidth": 2
 					} )
-				}, new FormLayoutConstraints( class java.lang.String ) {
-					"value": "Center"
-				} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 775, 765 )
+			"size": new java.awt.Dimension( 775, 735 )
 		} )
 	}
 }

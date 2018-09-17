@@ -8,6 +8,6 @@ import cc.xiaoquer.tinytools.ui.mail.BatchMailsSendingUI;
 public class Main {
 
     public static void main(String[] args) {
-        new BatchMailsSendingUI().setVisible(true);
+        new BatchMailsSendingUI().show();
     }
 }

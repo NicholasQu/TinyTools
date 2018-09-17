@@ -10,7 +10,8 @@ import java.util.Properties;
  */
 public class PropertiesCache {
     public static final String  CONFIG_PATH                 = System.getProperty("user.dir") + File.separator + "TT_FILES";
-    private static final String CONFIG_FILE_NAME            = CONFIG_PATH + File.separator +"conf" + File.separator + "conf.properties";
+    public static final String  CONFIG_PATH_CONF            = CONFIG_PATH + File.separator +"conf";
+    private static final String CONFIG_FILE_NAME            = CONFIG_PATH_CONF + File.separator + "conf.properties";
     private static File         CONFIG_FILE                 = new File(CONFIG_FILE_NAME);
     private static long         CONFIG_FILE_LAST_MODIFIED   = 0L;
 
@@ -34,13 +35,13 @@ public class PropertiesCache {
 
         readFile();
         for (JTextComponent component : components) {
-            if (component.getText().length() == 0) {
+//            if (component.getText().length() == 0) {
                 if (component instanceof JPasswordField) {
                     component.setText(PropertiesCache.getPassword(component.getName()));
                 } else {
                     component.setText(PropertiesCache.getValue(component.getName()));
                 }
-            }
+//            }
         }
     }
 
@@ -60,7 +61,7 @@ public class PropertiesCache {
 
     public static void backupCacheFile(String backupKey) {
         //创建备份文件
-        File backUpFile = new File(CONFIG_FILE_NAME, CONFIG_BACKUP_FILE_NAME.replace("{}", backupKey));
+        File backUpFile = new File(CONFIG_PATH_CONF, CONFIG_BACKUP_FILE_NAME.replace("{}", String.valueOf(System.currentTimeMillis())));
         try {
             if (!backUpFile.exists()) {
                 backUpFile.createNewFile();
@@ -71,6 +72,7 @@ public class PropertiesCache {
             System.out.println("备份文件 " + backUpFile.getAbsolutePath() + " 成功");
 
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("备份文件失败");
         }
     }
@@ -145,7 +147,7 @@ public class PropertiesCache {
         if (baselineProp.hashCode() == configProp.hashCode()) {
             return;
         }
-        System.out.println("FLUSH CACHE.");
+        System.out.println("FLUSH CACHE." + CONFIG_FILE_NAME);
 
 
         if (!CONFIG_FILE.exists()) {
