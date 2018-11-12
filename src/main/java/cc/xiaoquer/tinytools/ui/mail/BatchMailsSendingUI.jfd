@@ -28,7 +28,7 @@ new FormModel {
 				"minimumSize": new java.awt.Dimension( 774, 90 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 					"$columnSpecs": "117, 559"
-					"$rowSpecs": "0, 135, 0, 29, 0, 0, 109, 169, 32"
+					"$rowSpecs": "0, 135, 0, 29, 0, 0, 137, 169, 32"
 					"$hGap": 5
 					"$vGap": 5
 					"$alignLeft": true
@@ -248,7 +248,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label2"
-						"text": "Email内容模板  "
+						"text": "Email内容模板"
 						"horizontalAlignment": 11
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 						"gridy": 6
@@ -257,12 +257,16 @@ new FormModel {
 						name: "bodyPanel"
 						"minimumSize": new java.awt.Dimension( 610, 90 )
 						"preferredSize": new java.awt.Dimension( 610, 108 )
+						"viewportBorder": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "txtMailBody"
-							"lineWrap": true
 							"text": new FormMessage( null, "BatchMailsSendingUI.txtMailBody.text" )
 							"minimumSize": new java.awt.Dimension( 670, 90 )
 							"preferredSize": new java.awt.Dimension( 670, 102 )
+							"tabSize": 10
+							"lineWrap": true
+							"wrapStyleWord": true
+							"rows": 20
 							addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtMailBodyFocusLost", true ) )
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {

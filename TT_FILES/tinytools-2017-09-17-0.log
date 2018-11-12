@@ -1,0 +1,15 @@
+[2017-09-17 14:09:52.080] [c.xiaoquer.tinytools.mail.MailSender:67  ] - 邮件发送失败
+java.lang.NullPointerException: null
+	at javax.mail.internet.InternetAddress.parse(InternetAddress.java:673) ~[mail-1.4.7.jar:1.4.7]
+	at javax.mail.internet.InternetAddress.parse(InternetAddress.java:633) ~[mail-1.4.7.jar:1.4.7]
+	at javax.mail.internet.InternetAddress.<init>(InternetAddress.java:111) ~[mail-1.4.7.jar:1.4.7]
+	at org.apache.commons.mail.Email.createInternetAddress(Email.java:1895) ~[commons-email-1.4.jar:1.4]
+	at org.apache.commons.mail.Email.addCc(Email.java:947) ~[commons-email-1.4.jar:1.4]
+	at org.apache.commons.mail.Email.addCc(Email.java:930) ~[commons-email-1.4.jar:1.4]
+	at org.apache.commons.mail.Email.addCc(Email.java:907) ~[commons-email-1.4.jar:1.4]
+	at cc.xiaoquer.tinytools.mail.MailSender$1.call(MailSender.java:56) [classes/:na]
+	at cc.xiaoquer.tinytools.mail.MailSender$1.call(MailSender.java:40) [classes/:na]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_152-ea]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_152-ea]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_152-ea]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152-ea]

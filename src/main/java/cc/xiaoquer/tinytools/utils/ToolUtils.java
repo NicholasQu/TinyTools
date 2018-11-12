@@ -122,7 +122,7 @@ public class ToolUtils {
             cellValue = "";
         }
 
-        return ToolUtils.trim(cellValue.replace(".0", ""));
+        return ToolUtils.trim(cellValue);
     }
 
     public static void main(String[] args) {

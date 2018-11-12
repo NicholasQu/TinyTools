@@ -768,7 +768,7 @@ public class BatchMailsSendingUI {
                 {
                     contentPanel.setLayout(new GridBagLayout());
                     ((GridBagLayout)contentPanel.getLayout()).columnWidths = new int[] {122, 559, 0};
-                    ((GridBagLayout)contentPanel.getLayout()).rowHeights = new int[] {0, 140, 0, 34, 0, 0, 114, 174, 32, 0};
+                    ((GridBagLayout)contentPanel.getLayout()).rowHeights = new int[] {0, 140, 0, 34, 0, 0, 142, 174, 32, 0};
                     ((GridBagLayout)contentPanel.getLayout()).columnWeights = new double[] {0.0, 0.0, 1.0E-4};
                     ((GridBagLayout)contentPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
@@ -1015,7 +1015,7 @@ public class BatchMailsSendingUI {
                         new Insets(0, 0, 5, 0), 0, 0));
 
                     //---- label2 ----
-                    label2.setText("Email\u5185\u5bb9\u6a21\u677f  ");
+                    label2.setText("Email\u5185\u5bb9\u6a21\u677f");
                     label2.setHorizontalAlignment(SwingConstants.TRAILING);
                     contentPanel.add(label2, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -1025,12 +1025,16 @@ public class BatchMailsSendingUI {
                     {
                         bodyPanel.setMinimumSize(new Dimension(610, 90));
                         bodyPanel.setPreferredSize(new Dimension(610, 108));
+                        bodyPanel.setViewportBorder(LineBorder.createBlackLineBorder());
 
                         //---- txtMailBody ----
-                        txtMailBody.setLineWrap(true);
                         txtMailBody.setText(bundle.getString("BatchMailsSendingUI.txtMailBody.text"));
                         txtMailBody.setMinimumSize(new Dimension(670, 90));
                         txtMailBody.setPreferredSize(new Dimension(670, 102));
+                        txtMailBody.setTabSize(10);
+                        txtMailBody.setLineWrap(true);
+                        txtMailBody.setWrapStyleWord(true);
+                        txtMailBody.setRows(20);
                         txtMailBody.addFocusListener(new FocusAdapter() {
                             @Override
                             public void focusLost(FocusEvent e) {

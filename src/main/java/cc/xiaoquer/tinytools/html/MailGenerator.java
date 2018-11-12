@@ -258,6 +258,12 @@ public class MailGenerator {
             String dataValue   = (String)dataMap.get(colHeader);
             toConsole("##### Replacing {0} with ColumnHeader {1} by {2}", replacement, colHeader, dataValue);
 
+            //若要expand的单元格是空的，说明没有需要显示的表格，直接替换为空值。
+            if (StringUtils.isBlank(dataValue)) {
+                realtxt = realtxt.replaceAll(escapse(replacement), " ");
+                break;
+            }
+
             Matcher excelMatcher = TPL_INNER_SHEET_RNG_PATTERN.matcher(dataValue);
             String sheetName = null;
             String rangeStart = null;
